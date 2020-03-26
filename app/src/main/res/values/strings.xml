@@ -32,4 +32,8 @@
         <item>@string/settings_order_by_most_recent_value</item>
     </string-array>
 
+    <string name="settings_limit_label">Limit (results number)</string>
+    <string name="settings_limit_key" translatable="false">limit</string>
+    <string name="settings_limit_default" translatable="false">10</string>
+
 </resources>

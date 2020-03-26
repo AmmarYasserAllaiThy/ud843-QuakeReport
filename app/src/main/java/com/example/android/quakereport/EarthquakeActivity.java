@@ -42,7 +42,6 @@ public class EarthquakeActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<List<Earthquake>> {
 
     static final String
-//            LOG_TAG = EarthquakeActivity.class.getName(),
             LOADER_TAG = "LOADER_LOGGING",
             USGS_REQUEST_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query";
 
@@ -129,8 +128,10 @@ public class EarthquakeActivity extends AppCompatActivity
                 getString(R.string.settings_min_magnitude_default));
         String orderBy = sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
-                getString(R.string.settings_order_by_default)
-        );
+                getString(R.string.settings_order_by_default));
+        String limit = sharedPrefs.getString(
+                getString(R.string.settings_limit_key),
+                getString(R.string.settings_limit_default));
 
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(USGS_REQUEST_URL);
@@ -140,13 +141,12 @@ public class EarthquakeActivity extends AppCompatActivity
 
         // Append query parameter and its value. For example, the `format=geojson`
         uriBuilder.appendQueryParameter("format", "geojson");
-        uriBuilder.appendQueryParameter("limit", "50");
+        uriBuilder.appendQueryParameter("limit", limit);
         uriBuilder.appendQueryParameter("minmag", minMagnitude);
         uriBuilder.appendQueryParameter("orderby", orderBy);
 
         // Return the completed uri `http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10&minmag=minMagnitude&orderby=time
         return new EarthquakeLoader(this, uriBuilder.toString());
-
     }
 
     @Override

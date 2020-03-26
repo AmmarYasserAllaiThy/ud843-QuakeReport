@@ -14,7 +14,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
     }
 
     public static class EarthquakePreferenceFragment extends PreferenceFragment
@@ -27,9 +26,11 @@ public class SettingsActivity extends AppCompatActivity {
 
             Preference minMagnitude = findPreference(getString(R.string.settings_min_magnitude_key));
             Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
+            Preference limit = findPreference(getString(R.string.settings_limit_key));
+
             bindPreferenceSummaryToValue(minMagnitude);
             bindPreferenceSummaryToValue(orderBy);
-
+            bindPreferenceSummaryToValue(limit);
         }
 
         private void bindPreferenceSummaryToValue(Preference preference) {
