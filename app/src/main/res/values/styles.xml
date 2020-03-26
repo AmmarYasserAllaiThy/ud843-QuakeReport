@@ -41,11 +41,12 @@
 
     <style name="Of_TV">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
         <item name="android:textSize">15sp</item>
     </style>
 
     <style name="Place_TV" parent="Of_TV">
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>

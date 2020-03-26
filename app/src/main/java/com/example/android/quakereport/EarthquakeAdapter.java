@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
@@ -39,11 +41,12 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
             magTV.setText(String.format("%.1f", earthquake.getMag()));
             ofTV.setText(earthquake.getOf());
             placeTV.setText(earthquake.getPlace());
-            dateTV.setText(earthquake.getDate());
+            dateTV.setText(new SimpleDateFormat("MMM dd, yyyy'\n'h:mm a")
+                    .format(new Date(earthquake.getTime())));
 
             // Set the proper background color on the magnitude circle.
             // Get the appropriate background color based on the current earthquake magnitude
-            int magnitudeColor = getMagnitudeColor(earthquake.getMag() % 6.0 * 10.0); //TODO remove extra operations
+            int magnitudeColor = getMagnitudeColor(earthquake.getMag());
 
             // Fetch the background from the TextView, which is a GradientDrawable.
             GradientDrawable magnitudeCircle = (GradientDrawable) magTV.getBackground();
